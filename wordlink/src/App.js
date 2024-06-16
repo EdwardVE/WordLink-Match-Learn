@@ -1,25 +1,47 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import LevelSelector from './components/LevelSelector/LevelSelector';
+import GameBoard from './components/GameBoard/GameBoard';
+import { levels } from './data/levels';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [currentLevel, setCurrentLevel] = useState(null);
+
+  const handleBackToMenu = () => {
+    setCurrentLevel(null);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Acá irán la aplicación de las cartas :D
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header />
+      {currentLevel === null ? (
+        <LevelSelector levels={levels} onSelectLevel={setCurrentLevel} />
+      ) : (
+        <GameBoard level={currentLevel} onBackToMenu={handleBackToMenu} />
+      )}
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;
+
+
+
+// import './App.css';
+// import { Routes, Route } from 'react-router-dom';
+// import Home from './pages/Home/Home';
+
+// function App() {
+//   return (
+//     <div className="App">
+//         <Routes>
+//           <Route path='/' element={<Home />} />
+//         </Routes>
+//     </div>
+//   );
+// }
+
+// export default App;
