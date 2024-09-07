@@ -22,6 +22,14 @@ const GameBoard = ({ level, onBackToMenu }) => {
 
   useEffect(() => {
     const words = levels[level].words;
+    // console.log(words)
+    // switch (level) {
+    //   case 0:
+    //     //[[dd],][1]]
+    //     words = pila(words)
+
+        
+    // }
     const leftWords = words.map(wordPair => wordPair[0]);
     const rightWords = words.map(wordPair => wordPair[1]);
 
