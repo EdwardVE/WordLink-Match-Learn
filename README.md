@@ -2,10 +2,16 @@
 
 **WordLink-Match-Learn** es un juego interactivo diseñado para ayudar a las personas a aprender inglés de una manera divertida y efectiva. El objetivo del juego es unir parejas de palabras, como términos en inglés con sus traducciones o sinónimos, para mejorar el vocabulario.
 ## Cómo Jugar
-Una vez cargado el juego, verás dos columnas con palabras en inglés y su traducción o sinónimos.
-El objetivo es hacer clic en una palabra en la columna izquierda y luego hacer clic en su correspondiente traducción en la columna derecha.
-Si emparejas correctamente, las palabras desaparecerán.
-Completa todos los pares para ganar el juego.
+
+1. **Carga el juego**: Una vez cargado, verás dos columnas con palabras en inglés y su traducción o sinónimos.
+   
+2. **Empareja las palabras**:
+   - Haz clic en una palabra en la columna izquierda.
+   - Luego, haz clic en su correspondiente traducción en la columna derecha.
+
+3. **Verifica el emparejamiento**: Si emparejas correctamente, las palabras desaparecerán.
+
+4. **Completa el juego**: Sigue emparejando palabras hasta que completes todos los pares para ganar el juego.
 
 ## Demo en Vivo
 
