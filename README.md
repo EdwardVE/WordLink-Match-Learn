@@ -46,4 +46,18 @@ Sigue estos pasos para clonar e instalar el proyecto localmente:
 
 1. **Clona este repositorio**:
    ```bash
-   git clone https://github.com/tu-usuario/WordLink-Match-Learn.git
+   git clone [https://github.com/tu-usuario/WordLink-Match-Learn.git](https://github.com/EdwardVE/WordLink-Match-Learn.git)
+   
+2. **Navega al directorio del proyecto**:
+   ```bash
+   cd wordlink
+   
+3. **Instala las dependencias**:
+   ```bash
+   npm install
+   
+4. **Ejecución Local**:
+   ```bash
+   npm start
+   
+El proyecto estará corriendo en http://localhost:3000 y la aplicación se abrirá automáticamente en tu navegador. Si no se abre, puedes acceder manualmente.
