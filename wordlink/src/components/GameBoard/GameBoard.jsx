@@ -1,5 +1,5 @@
 // src/components/GameBoard/GameBoard.jsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import WordPair from '../WordPair/WordPair';
 import Stack from '../../utils/Estructuras de Datos/Stack';
 import BinarySearchTree from '../../utils/Estructuras de Datos/BinarySearchTree';
@@ -23,6 +23,7 @@ const GameBoard = ({ level, onBackToMenu, onLevelComplete }) => {
   const matchSound = new Audio('/sounds/Siu.mp3');
   const errorSound = new Audio('/sounds/Error.mp3');
   const undoSound = new Audio('/sounds/Romper.mp3');
+  const levelCompleteSound = useRef(new Audio('/sounds/SanAndreas.mp3'));
 
   // Manejar clic en una palabra
   const handleWordClick = (word, isLeftColumn) => {
@@ -40,9 +41,9 @@ const GameBoard = ({ level, onBackToMenu, onLevelComplete }) => {
         newMatchedPairs.add(firstSelection.word).add(word);
         setMatchedPairs(newMatchedPairs);
         moveStack.push({ word: firstSelection.word, translation: word }); // Guardar emparejamiento en la pila
-        matchSound.play(); // Reproducir sonido de éxito
+        matchSound.play();
       } else {
-        errorSound.play(); // Reproducir sonido de error
+        errorSound.play();
       }
       setTimeout(() => {
         setSelectedWords([]);
@@ -59,7 +60,7 @@ const GameBoard = ({ level, onBackToMenu, onLevelComplete }) => {
       updatedMatchedPairs.delete(lastMove.word);
       updatedMatchedPairs.delete(lastMove.translation);
       setMatchedPairs(updatedMatchedPairs);
-      undoSound.play(); // Reproducir sonido de deshacer
+      undoSound.play();
     }
   };
 
@@ -101,6 +102,9 @@ const GameBoard = ({ level, onBackToMenu, onLevelComplete }) => {
   useEffect(() => {
     if (matchedPairs.size === levels[level].words.length * 2) {
       setShowModal(true);
+      levelCompleteSound.current.play().catch(error => {
+        console.error("Error al reproducir el sonido de completar nivel:", error);
+      });
     }
   }, [matchedPairs, level]);
 

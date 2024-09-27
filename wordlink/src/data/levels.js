@@ -107,7 +107,7 @@ export const levels = [
   {
     name: 'Nivel 8',
     words: [
-      ['animal', 'animal'],
+      ['ant', 'hormiga'],
       ['lion', 'león'],
       ['tiger', 'tigre'],
       ['elephant', 'elefante'],
@@ -122,7 +122,7 @@ export const levels = [
   {
     name: 'Nivel 9',
     words: [
-      ['color', 'color'],
+      ['grey', 'gris'],
       ['red', 'rojo'],
       ['green', 'verde'],
       ['yellow', 'amarillo'],

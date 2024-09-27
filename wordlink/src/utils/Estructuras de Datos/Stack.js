@@ -1,52 +1,80 @@
-import StackNode from './StackNode';
+// Stack.js
+
+import LinkedList from './LinkedList.js';
 
 class Stack {
   constructor() {
-    this.top = null;
-    this._size = 0;
+    this.list = new LinkedList(); // Instancia de LinkedList para gestionar los elementos de la pila
   }
 
-  // Agregar un elemento a la pila
+  /**
+   * Agrega un elemento a la pila.
+   * @param {*} value - El valor a apilar.
+   */
   push(value) {
-    const newNode = new StackNode(value);
-    newNode.next = this.top;
-    this.top = newNode;
-    this._size++;
+    this.list.addFirst(value);
+    console.log(`Apilado: ${value}`);
   }
 
-  // Remover el elemento superior de la pila
+  /**
+   * Remueve el elemento superior de la pila y lo retorna.
+   * @returns {*} - El valor desapilado o null si la pila está vacía.
+   */
   pop() {
-    if (this.isEmpty()) {
-      return null;
+    const value = this.list.removeFirst();
+    if (value !== null) {
+      console.log(`Desapilado: ${value}`);
     }
-    const poppedNode = this.top;
-    this.top = this.top.next;
-    this._size--;
-    return poppedNode.value;
+    return value;
   }
 
-  // Ver el elemento superior sin removerlo
+  /**
+   * Retorna el valor del elemento superior sin removerlo.
+   * @returns {*} - El valor en la cima de la pila o null si está vacía.
+   */
   peek() {
-    if (this.isEmpty()) {
-      return null;
-    }
-    return this.top.value;
+    return this.list.getFirst();
   }
 
-  // Verificar si la pila está vacía
+  /**
+   * Verifica si la pila está vacía.
+   * @returns {boolean} - True si está vacía, false en caso contrario.
+   */
   isEmpty() {
-    return this.top === null;
+    return this.list.isEmpty();
   }
 
-  // Obtener el tamaño de la pila
+  /**
+   * Retorna el tamaño de la pila.
+   * @returns {number} - Número de elementos en la pila.
+   */
   size() {
-    return this._size;
+    return this.list.size();
   }
 
-  // Limpiar la pila
+  /**
+   * Limpia todos los elementos de la pila.
+   */
   clear() {
-    this.top = null;
-    this._size = 0;
+    this.list.clear();
+    console.log("La pila ha sido limpiada.");
+  }
+
+  /**
+   * Muestra todos los elementos de la pila desde la cima hasta el fondo.
+   */
+  display() {
+    if (this.isEmpty()) {
+      console.log("La pila está vacía.");
+      return;
+    }
+    let current = this.list.head;
+    const elements = [];
+    while (current) {
+      elements.push(current.value);
+      current = current.next;
+    }
+    console.log("Elementos de la pila (cima a fondo):", elements.join(" -> "));
   }
 }
 

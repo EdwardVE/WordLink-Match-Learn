@@ -11,13 +11,57 @@
   --locked-color: #999;
   --button-hover-color: #357ab8;
   --button-disabled-color: #a0c4e8;
+  
+  /* Variable para el fondo actual */
+  --current-background: url('/public/images/backgrounds/jake.webp'); /* Default */
 }
 
+.background-level-1 {
+  --current-background: url('/public/images/backgrounds/pokemon.webp');
+}
+
+.background-level-2 {
+  --current-background: url('/public/images/backgrounds/dog.gif');
+}
+
+.background-level-3 {
+  --current-background: url('/public/images/backgrounds/toy.webp');
+}
+
+.background-level-4 {
+  --current-background: url('/public/images/backgrounds/deadpool.gif');
+}
+
+.background-level-5 {
+  --current-background: url('/public/images/backgrounds/dragon.gif');
+}
+
+.background-level-6 {
+  --current-background: url('/public/images/backgrounds/kick.gif');
+}
+
+.background-level-7 {
+  --current-background: url('/public/images/backgrounds/show.gif');
+}
+
+.background-level-8 {
+  --current-background: url('/public/images/backgrounds/claudio.gif');
+}
+
+.background-level-9 {
+  --current-background: url('/public/images/backgrounds/rugrats.gif');
+}
+
+.background-level-10 {
+  --current-background: url('/public/images/backgrounds/arnold.webp');
+}
+
+
 /* Estilos Generales */
-body, html, #root, .app {
+body, html, #root {
   margin: 0;
   padding: 0;
-  height: 100%;
+  /* height: 100%; */ /* Eliminar esta línea */
   font-family: 'Roboto', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
@@ -27,11 +71,86 @@ body, html, #root, .app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative; /* Para posicionamiento */
+  background-image: var(--current-background);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Hace que el fondo permanezca fijo al hacer scroll */
+  transition: background-image 0.5s ease-in-out;
+  /* height: 100%; */ /* Eliminar esta línea */
 }
 
 .main {
   flex: 1;
   padding: 20px;
+}
+
+/* Estilos para SplashScreen */
+.splash-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  background-image: url('/public/gif/ps2.webp');
+  background-size: cover; /* Escala el fondo para cubrir todo el contenedor */
+  background-position: center center; /* Centra la imagen de fondo */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-attachment: fixed; /* Fija la imagen durante el scroll */
+  position: fixed; /* Fija la pantalla de inicio */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.splash-gif {
+  width: 300px; /* Ajusta el tamaño según tu preferencia */
+  height: auto;
+}
+
+/* Estilos para StartScreen */
+.start-screen {
+  position: fixed; /* Fija el contenedor en la ventana */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Ancho completo de la ventana */
+  height: 100vh; /* Altura completa de la ventana */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000; /* Fondo negro para resaltar el GIF, puedes cambiarlo si lo deseas */
+  overflow: hidden; /* Evita el desplazamiento dentro del contenedor */
+  z-index: 999; /* Asegura que esté por encima de otros elementos */
+}
+
+/* Estilos para el GIF */
+.start-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Hace que el GIF cubra todo el contenedor sin distorsionarse */
+  position: absolute; /* Permite posicionar otros elementos encima del GIF */
+  top: 0;
+  left: 0;
+  z-index: -1; /* Envía el GIF detrás de otros elementos dentro del contenedor */
+}
+
+/* Estilos para el botón Start */
+.start-button {
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  background-color: rgba(76, 175, 80, 0.8); /* Verde con opacidad, ajusta según tu diseño */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.start-button:hover {
+  background-color: rgba(69, 160, 73, 0.9); /* Verde más oscuro al pasar el mouse */
+  transform: scale(1.05);
 }
 
 /* Header */
@@ -54,9 +173,6 @@ body, html, #root, .app {
   padding: 10px;
   text-align: center;
   color: #333;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -74,7 +190,8 @@ body, html, #root, .app {
 .level-selector-heading {
   font-size: 1.8rem;
   margin-bottom: 20px;
-  color: #333;
+  color: #fff; /* Cambiar a blanco para mejor contraste */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Mejora la legibilidad */
 }
 
 .level-selector-list {
@@ -86,7 +203,7 @@ body, html, #root, .app {
 }
 
 .level-selector-item {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
   border: 2px solid var(--primary-color);
   border-radius: 8px;
   padding: 15px 25px;
@@ -95,22 +212,21 @@ body, html, #root, .app {
   transition: background-color 0.3s, transform 0.3s;
   font-size: 1.2rem;
   min-width: 150px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Mejora la legibilidad */
 }
 
-.level-selector-item:hover {
-  background-color: #e6f0ff;
-  transform: scale(1.05);
-}
 
 .level-selector-item.locked {
-  background-color: #f0f0f0;
+  background-color: rgba(240, 240, 240, 0.8); /* Fondo semi-transparente */
   border-color: #ccc;
   cursor: not-allowed;
   color: var(--locked-color);
+  text-shadow: none; /* Opcional: si el texto no necesita sombra */
 }
 
 .level-selector-item.unlocked {
   color: var(--text-color);
+  text-shadow: none; /* Opcional: si el texto no necesita sombra */
 }
 
 /* GameBoard */
